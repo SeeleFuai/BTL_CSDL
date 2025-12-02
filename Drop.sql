@@ -7,7 +7,7 @@
 -- CHECK (LoaiSanPham IN ('Monitor', 'RAM', 'CPU', 'GPU', 'Fan', 'Mouse', 'Mainboard', 'Others'));
 
 
-
+USE LinhKienDienTuQly
 DROP TABLE ChiTiet_HD_Nhap
 DROP TABLE ChiTiet_HD_Ban
 DROP TABLE Hoa_Don_Nhap_Hang
