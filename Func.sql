@@ -123,8 +123,13 @@ GROUP BY
     HDN.MaNV
 GO 
 
-
-
+-- Xóa hóa đơn 
+-- DELETE FROM ChiTiet_HD_Nhap
+-- WHERE MaPN = 'PN01'; vì có ON DELETE CASCADE
+-- GO
+DELETE FROM Hoa_Don_Nhap_Hang
+WHERE MaPN = 'PN01';
+GO
 
 ------------------------------ 4. Quản lý Hóa đơn bán ------------------------------
 
@@ -180,6 +185,14 @@ ORDER BY (TONGTIEN) DESC
 GO
 
 
+--Xóa hóa đơn 
+-- DELETE FROM ChiTiet_HD_Ban
+-- WHERE MaHD = 'HD01'; vì có ON DELETE CASCADE
+DELETE FROM Hoa_Don_Ban_Hang
+WHERE MaHD = 'HD01';
+GO
+
+
 ------------------------------ 5. Quản lý Khách hàng ------------------------------
 
 -- Tổng chi tiêu của từng khách hàng
@@ -196,6 +209,16 @@ GROUP BY KH.MaKH, KH.TenKH, KH.SDT, KH.DiaChi
 ORDER BY TongChiTieu DESC;
 GO
 
+-- xóa khách hàng 
+DELETE FROM Khach_Hang
+WHERE MaKH = 'KH001';
+GO
+
 ------------------------------ 6. Quản lý Nhân Viên ------------------------------
 
 -- I only see ADD and SHOW STAFF so nothing to do here <(")
+
+-- xóa nhân viên 
+DELETE FROM Nhan_Vien
+WHERE MaNV = 'NV001';
+GO
