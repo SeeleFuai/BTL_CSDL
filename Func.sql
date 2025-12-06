@@ -62,16 +62,14 @@ GO
 
 -- Thêm SP vàp hóa đơn nhập
 INSERT INTO ChiTiet_HD_Nhap (MaPN, MaSP, SoLuong, GiaNhap)
-VALUES ('PN001', 'SP001', 50, 120000);
+VALUES ('PN6', 'SP01', 10, 15000);
 GO
 
 
 -- Cập nhật tồn kho 
-
-
 -- UPDATE San_Pham
 -- SET SoLuongTonKho = SoLuongTonKho + 50
--- WHERE MaSP = 'SP001';
+-- WHERE MaSP = 'SP01';
 -- GO
 -- HOẶC 
 
@@ -80,8 +78,8 @@ ON ChiTiet_HD_Nhap
 AFTER INSERT
 AS
 BEGIN
-    UPDATE San_Pham
-    SET SoLuongTonKho = SoLuongTonKho + i.SoLuong
+    UPDATE sp
+    SET sp.SoLuongTonKho = sp.SoLuongTonKho + i.SoLuong
     FROM San_Pham sp
     JOIN inserted i ON sp.MaSP = i.MaSP;
 END;
@@ -158,7 +156,7 @@ SELECT
     CT.SoLuong, 
     CT.Gia,
     (CT.SoLuong * CT.Gia) AS ThanhTien
-FROM Hoa_Don_Ban_Hang HD, ChiTiet_HD_Ban CT,Nhan_Vien NV,Khach_Hang KH,San_Pham SP 
+FROM Hoa_Don_Ban_Hang HD, ChiTiet_HD_Ban CT, Nhan_Vien NV, Khach_Hang KH, San_Pham SP 
 WHERE HD.MaNV = NV.MaNV 
     AND HD.MaKH = KH.MaKH 
     AND HD.MaHD = CT.MaHD 
@@ -198,6 +196,7 @@ GO
 -- Tổng chi tiêu của từng khách hàng
 SELECT 
     KH.MaKH, 
+    HD.MaHD,
     KH.TenKH, 
     KH.SDT, 
     KH.DiaChi,
@@ -205,13 +204,13 @@ SELECT
 FROM Khach_Hang KH, Hoa_Don_Ban_Hang HD,ChiTiet_HD_Ban CT 
 WHERE KH.MaKH = HD.MaKH 
     AND HD.MaHD = CT.MaHD
-GROUP BY KH.MaKH, KH.TenKH, KH.SDT, KH.DiaChi
+GROUP BY KH.MaKH, HD.MaHD, KH.TenKH, KH.SDT, KH.DiaChi
 ORDER BY TongChiTieu DESC;
 GO
 
 -- xóa khách hàng 
 DELETE FROM Khach_Hang
-WHERE MaKH = 'KH001';
+WHERE MaKH = 'KH01';
 GO
 
 ------------------------------ 6. Quản lý Nhân Viên ------------------------------
@@ -220,5 +219,6 @@ GO
 
 -- xóa nhân viên 
 DELETE FROM Nhan_Vien
-WHERE MaNV = 'NV001';
+WHERE MaNV = 'NV01';
 GO
+
