@@ -1,9 +1,12 @@
 
--- -- Tổng doanh thu theo tháng
--- SELECT MONTH(NgayLap) AS Thang, SUM(SoLuong * DonGia) AS DoanhThu
--- FROM HoaDon HD
--- JOIN ChiTietHD CT ON HD.MaHD = CT.MaHD
--- GROUP BY MONTH(NgayLap);
+-- SELECT 
+--  MONTH(HD.NgayBan) AS Thang,
+--     SUM(CT.SoLuong * CT.Gia) AS DoanhThu
+-- FROM Hoa_Don_Ban_Hang HD
+-- JOIN ChiTiet_HD_Ban CT ON HD.MaHD = CT.MaHD
+-- GROUP BY MONTH(HD.NgayBan)
+-- ORDER BY Thang;
+-- GO
 
 -- -- Thống kê số lượng tồn kho theo loại sản phẩm
 -- SELECT LoaiSanPham, SUM(SoLuongTonKho) AS TongTonKho

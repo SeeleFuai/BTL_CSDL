@@ -1,9 +1,13 @@
+USE LinhKienDienTuQly
+
 -- Tìm theo tên
 SELECT * FROM [dbo].[San_Pham]
-WHERE TenSP LIKE '%IC%';
+WHERE TenSP LIKE '%IC%'
+GO
 
 SELECT * FROM [dbo].[Khach_Hang]
 WHERE TenKH LIKE N'Lưu%'
+GO
 
 SELECT * FROM [dbo].[Nhan_Vien]
 WHERE TenNV LIKE N'Nguyễn%'
@@ -14,7 +18,7 @@ WHERE TenNCC LIKE N'%Tech%'
 
 -- Tìm theo phân loại
 SELECT * FROM [dbo].[San_Pham]
-WHERE LoaiSanPham = 'Màn hình';
+WHERE LoaiSanPham = 'Màn hình'
 
 
 -- Tìm theo khoảng giá
