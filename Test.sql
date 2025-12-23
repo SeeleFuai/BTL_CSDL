@@ -1,18 +1,17 @@
 USE LinhKienDienTuQly
-SELECT 
-    HD.MaHD, 
-    HD.NgayBan, 
-    NV.TenNV AS NhanVienBan, 
-    KH.TenKH AS KhachHang,
-    SP.MaSP, 
+SELECT HDN.MaPN, 
+    HDN.NgayNhap, 
+    NV.TenNV, 
+    NCC.TenNCC,
+    CTN.MaSP, 
     SP.TenSP, 
-    CT.SoLuong, 
-    CT.Gia,
-    (CT.SoLuong * CT.Gia) AS ThanhTien
-FROM Hoa_Don_Ban_Hang HD, ChiTiet_HD_Ban CT, Nhan_Vien NV, Khach_Hang KH, San_Pham SP 
-WHERE HD.MaNV = NV.MaNV 
-    AND HD.MaKH = KH.MaKH 
-    AND HD.MaHD = CT.MaHD 
-    AND CT.MaSP = SP.MaSP 
-    AND HD.MaHD = 'HD01'
+    CTN.SoLuong, 
+    CTN.GiaNhap AS 'GiaNhap'
+FROM Hoa_Don_Nhap_Hang HDN, Nhan_Vien NV, Nha_Cung_Cap NCC, ChiTiet_HD_Nhap CTN, San_Pham SP
+WHERE HDN.MaNV = NV.MaNV
+    AND HDN.MaNCC = NCC.MaNCC
+    AND HDN.MaPN = CTN.MaPN
+    AND CTN.MaSP = SP.MaSP
+    -- AND HDN.MaPN = 'PN02';
+    AND YEAR(HDN.NgayNhap) = 202;
 GO

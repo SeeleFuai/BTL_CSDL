@@ -1,7 +1,7 @@
-
+USE LinhKienDienTuQly;
 -- SELECT 
 --  MONTH(HD.NgayBan) AS Thang,
---     SUM(CT.SoLuong * CT.Gia) AS DoanhThu
+--  SUM(CT.SoLuong * CT.Gia) AS DoanhThu
 -- FROM Hoa_Don_Ban_Hang HD
 -- JOIN ChiTiet_HD_Ban CT ON HD.MaHD = CT.MaHD
 -- GROUP BY MONTH(HD.NgayBan)
@@ -97,7 +97,7 @@ SELECT HDN.MaPN,
     CTN.MaSP, 
     SP.TenSP, 
     CTN.SoLuong, 
-    CTN.Gia AS 'GiaNhap'
+    CTN.GiaNhap
 FROM Hoa_Don_Nhap_Hang HDN, Nhan_Vien NV, Nha_Cung_Cap NCC, ChiTiet_HD_Nhap CTN, San_Pham SP
 WHERE HDN.MaNV = NV.MaNV
     AND HDN.MaNCC = NCC.MaNCC
@@ -114,7 +114,7 @@ SELECT
     HDN.NgayNhap,
     HDN.MaNV AS 'NhanVienNhap',
     SUM(CTN.SoLuong) AS 'TongSoLuong',
-    SUM(CTN.Gia * CTN.SoLuong) AS 'TongTienNhap'
+    SUM(CTN.GiaNhap * CTN.SoLuong) AS 'TongTienNhap'
 FROM Hoa_Don_Nhap_Hang HDN,ChiTiet_HD_Nhap CTN
 WHERE HDN.MaPN = CTN.MaPN
 GROUP BY

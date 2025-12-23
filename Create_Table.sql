@@ -33,6 +33,7 @@ CREATE TABLE Khach_Hang (
 );
 GO
 
+
 CREATE TABLE San_Pham (
     MaSP CHAR(10) NOT NULL, --PK
     TenSP NVARCHAR(100) NOT NULL,
